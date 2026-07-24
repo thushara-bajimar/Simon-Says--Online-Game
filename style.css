@@ -1,0 +1,31 @@
+body{
+    text-align: center;
+}
+
+.outer{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* gap: 0.75rem; */
+}
+
+.btn{
+    height: 10rem;
+    width: 10rem;
+    border: 10px solid black;
+    border-radius: 20%;
+    margin: 0.4rem;
+}
+
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+.green{
+    background-color: green;
+}
+.yellow{
+    background-color: yellow;
+}
