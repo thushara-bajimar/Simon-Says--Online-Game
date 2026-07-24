@@ -21,7 +21,14 @@ function btnFlash(btn){
 
     setTimeout(function() {
         btn.classList.remove("flash");
-    }, 300);
+    }, 270);
+}
+function userFlash(btn){
+    btn.classList.add("userFlash");
+
+    setTimeout(function() {
+        btn.classList.remove("userFlash");
+    }, 270);
 }
 
 function levelUp(){
@@ -38,4 +45,19 @@ function levelUp(){
     console.log(rndBtn);
 
     btnFlash(rndBtn);
+}
+
+function btnPress() {
+    console.log(this);
+    let btn = this;
+    userFlash(btn);
+
+    if(this == rndBtn){
+        levelUp();
+    }
+}
+
+let allBtns = document.querySelectorAll(".btn")
+for(btn of allBtns){
+    btn.addEventListener("click", btnPress)
 }
