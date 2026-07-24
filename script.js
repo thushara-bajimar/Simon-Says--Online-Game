@@ -32,6 +32,7 @@ function userFlash(btn){
 }
 
 function levelUp(){
+    userSeq = [];
     level++;
 
     h2.innerText = "Level " + level;
@@ -44,20 +45,41 @@ function levelUp(){
     console.log(rndCol);
     console.log(rndBtn);
 
+    gameSeq.push(rndCol);
+    console.log(gameSeq);
+
     btnFlash(rndBtn);
 }
 
-function btnPress() {
+function checkAns(idx) {
+    console.log("Curr level is", level);
+    // let idx = level-1;
+
+    if(gameSeq[idx] === userSeq[idx]){
+        if(userSeq.length == gameSeq.length){
+            setTimeout(levelUp, 1000);
+        }
+
+        console.log("Same Value");
+    }else{
+        h2.innerText = "Game Over!!! Press any key to start.";
+    }
+}
+
+function userBtnPress() {
     console.log(this);
     let btn = this;
     userFlash(btn);
 
-    if(this == rndBtn){
-        levelUp();
-    }
+    userCol = btn.getAttribute("id");
+    console.log(userCol);
+    userSeq.push(userCol);
+    console.log(userSeq);
+
+    checkAns(userSeq.length-1);
 }
 
 let allBtns = document.querySelectorAll(".btn")
 for(btn of allBtns){
-    btn.addEventListener("click", btnPress)
+    btn.addEventListener("click", userBtnPress);
 }
