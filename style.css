@@ -1,6 +1,9 @@
 body{
     text-align: center;
 }
+.black{
+    background-color: rgb(108, 107, 107);
+}
 
 .outer{
     justify-content: center;

@@ -4,6 +4,7 @@ let btns = ["red", "green", "yellow", "blue"];
 
 let level = 0;
 let started = false;
+let maxScore = 0;
 
 let h2 = document.querySelector("h2");
 
@@ -37,7 +38,7 @@ function levelUp(){
 
     h2.innerText = "Level " + level;
 
-    let rndIdx = Math.floor(Math.random() * 3);
+    let rndIdx = Math.floor(Math.random() * 4);
     let rndCol = btns[rndIdx];
     let rndBtn = document.querySelector(`.${rndCol}`);
 
@@ -53,28 +54,38 @@ function levelUp(){
 
 function checkAns(idx) {
     console.log("Curr level is", level);
-    // let idx = level-1;
 
     if(gameSeq[idx] === userSeq[idx]){
         if(userSeq.length == gameSeq.length){
             setTimeout(levelUp, 1000);
         }
 
-        console.log("Same Value");
+        // console.log("Same Value");
     }else{
-        h2.innerText = "Game Over!!! Press any key to start.";
+        maxScore = Math.max(maxScore, level*10);
+
+        h2.innerHTML = `Game Over!! Your score is <b>${level*10}<b/> <br/> Highest score ever is ${maxScore} <br/> Press any key to start.`;
+
+        let body = document.querySelector("body");
+
+        body.classList.add("black");
+        setTimeout(function(){
+            body.classList.remove("black");
+        }, 100);
+
+        reset();
     }
 }
 
 function userBtnPress() {
-    console.log(this);
+    // console.log(this);
     let btn = this;
     userFlash(btn);
 
     userCol = btn.getAttribute("id");
-    console.log(userCol);
+    // console.log(userCol);
     userSeq.push(userCol);
-    console.log(userSeq);
+    // console.log(userSeq);
 
     checkAns(userSeq.length-1);
 }
@@ -82,4 +93,11 @@ function userBtnPress() {
 let allBtns = document.querySelectorAll(".btn")
 for(btn of allBtns){
     btn.addEventListener("click", userBtnPress);
+}
+
+function reset() {
+    started = false;
+    gameSeq = [];
+    userSeq = [];
+    level = 0;
 }
