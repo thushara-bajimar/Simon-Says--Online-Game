@@ -18,12 +18,13 @@ let maxScore = 0;
 
 // Reference to the heading that shows the current level and game-over message.
 let h2 = document.querySelector("h2");
+let start = document.querySelector(".start")
 
 // Start the game when the user presses any key.
-h2.addEventListener("click", function() {
+start.addEventListener("click", function() {
     // Prevent restarting the game during an active round.
     if(started == false){
-        console.log("Game Started!");
+        // console.log("Game Started!");
         started = true;
 
         // Begin the first level.
@@ -46,7 +47,7 @@ function userFlash(btn){
 
     setTimeout(function() {
         btn.classList.remove("userFlash");
-    }, 270);
+    }, 150);
 }
 
 // Move the game to the next level by adding one random color to the sequence.
@@ -65,13 +66,13 @@ function levelUp(){
     let rndCol = btns[rndIdx];
     let rndBtn = document.querySelector(`.${rndCol}`);
 
-    console.log(rndIdx);
-    console.log(rndCol);
-    console.log(rndBtn);
+    // console.log(rndIdx);
+    // console.log(rndCol);
+    // console.log(rndBtn);
 
     // Store the new color in the sequence for the computer to display.
     gameSeq.push(rndCol);
-    console.log(gameSeq);
+    // console.log(gameSeq);
 
     // Flash the selected button to show the player the sequence.
     btnFlash(rndBtn);
@@ -79,7 +80,7 @@ function levelUp(){
 
 // Compare the player's click with the game sequence at the current position.
 function checkAns(idx) {
-    console.log("Curr level is", level);
+    // console.log("Curr level is", level);
 
     // If the current click matches the expected color, continue.
     if(gameSeq[idx] === userSeq[idx]){
@@ -94,7 +95,7 @@ function checkAns(idx) {
         maxScore = Math.max(maxScore, (level-1)*10);
 
         // Display game-over text with the score and best score.
-        h2.innerHTML = `Game Over!! Your score is <b>${(level-1)*10}<b/> <br/> Highest score ever is ${maxScore} <br/> <h2>Click on this text to start.</h2>`;
+        h2.innerHTML = `Game Over!! Your score is <b>${(level-1)*10}<b/> <br/> Highest score ever is ${maxScore} <br/> <h2 class="start">Click on this text to start.</h2>`;
 
         // Briefly darken the background to signal a loss.
         let body = document.querySelector("body");
