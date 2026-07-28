@@ -20,7 +20,7 @@ let maxScore = 0;
 let h2 = document.querySelector("h2");
 
 // Start the game when the user presses any key.
-document.addEventListener("keypress", function() {
+h2.addEventListener("click", function() {
     // Prevent restarting the game during an active round.
     if(started == false){
         console.log("Game Started!");
@@ -91,10 +91,10 @@ function checkAns(idx) {
         // console.log("Same Value");
     }else{
         // Update the highest score using the current level.
-        maxScore = Math.max(maxScore, level*10);
+        maxScore = Math.max(maxScore, (level-1)*10);
 
         // Display game-over text with the score and best score.
-        h2.innerHTML = `Game Over!! Your score is <b>${level*10}<b/> <br/> Highest score ever is ${maxScore} <br/> Press any key to start.`;
+        h2.innerHTML = `Game Over!! Your score is <b>${(level-1)*10}<b/> <br/> Highest score ever is ${maxScore} <br/> <h2>Click on this text to start.</h2>`;
 
         // Briefly darken the background to signal a loss.
         let body = document.querySelector("body");
