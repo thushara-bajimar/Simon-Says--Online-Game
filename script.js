@@ -95,7 +95,7 @@ function checkAns(idx) {
         maxScore = Math.max(maxScore, (level-1)*10);
 
         // Display game-over text with the score and best score.
-        h2.innerHTML = `<p class="over">Game Over!!</p> <p class="score">Your score is <b>${(level-1)*10}<b/> <br/> Highest score is ${maxScore} </p><br/> <h2 class="start">Click on this text to start.</h2>`;
+        h2.innerHTML = `<p class="over">Game Over!!</p> <p class="score">Your score is <b>${(level-1)*10}<b/> <br/> Highest score is ${maxScore} </p><h2 class="start">Click on this text to start.</h2>`;
 
         // Briefly darken the background to signal a loss.
         let body = document.querySelector("body");
