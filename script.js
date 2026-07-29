@@ -38,7 +38,7 @@ function btnFlash(btn){
 
     setTimeout(function() {
         btn.classList.remove("flash");
-    }, 270);
+    }, 250);
 }
 
 // Add a separate flash animation for the player's clicked button.
@@ -47,7 +47,7 @@ function userFlash(btn){
 
     setTimeout(function() {
         btn.classList.remove("userFlash");
-    }, 150);
+    }, 130);
 }
 
 // Move the game to the next level by adding one random color to the sequence.
@@ -95,7 +95,7 @@ function checkAns(idx) {
         maxScore = Math.max(maxScore, (level-1)*10);
 
         // Display game-over text with the score and best score.
-        h2.innerHTML = `Game Over!! Your score is <b>${(level-1)*10}<b/> <br/> Highest score ever is ${maxScore} <br/> <h2 class="start">Click on this text to start.</h2>`;
+        h2.innerHTML = `<p class="over">Game Over!!</p> <p class="score">Your score is <b>${(level-1)*10}<b/> <br/> Highest score is ${maxScore} </p><br/> <h2 class="start">Click on this text to start.</h2>`;
 
         // Briefly darken the background to signal a loss.
         let body = document.querySelector("body");
